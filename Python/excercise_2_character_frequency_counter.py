@@ -15,4 +15,14 @@
 
 
 def get_frequency(input_string:str) -> dict:
-    pass
+    #input_string=input_string.replace(" ","")
+    if input_string==None or input_string=="" or input_string==[]:
+        return None
+    dict_occurance={}
+    for letter in set(input_string):
+        if letter==" ":
+            pass
+        else:
+            dict_occurance[letter]=input_string.count(letter)
+    return dict_occurance
+print(get_frequency("Géza kék az ég"))
