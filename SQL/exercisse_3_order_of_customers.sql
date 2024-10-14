@@ -14,7 +14,7 @@ JOIN Orders ON Customers.customer_id=Orders.customer_id
 Group BY
     customer_name,join_date
 ORDER BY
-    Count(Orders.customer_id)
+    Count(Orders.customer_id) DESC
 
 /*
 Question 2: Rank Customers by Spending
@@ -27,7 +27,8 @@ Use a **window function** to rank the customers.
 SELECT
     Customers.customer_name,
     customers.country,
-    RANK() Over (Partition By customers.country ORDER BY SUM(OrderItems.price*OrderItems.quantity))
+    SUM(OrderItems.price*OrderItems.quantity),
+    RANK() Over (Partition By customers.country ORDER BY SUM(OrderItems.price*OrderItems.quantity) DESC)
 FROM 
     customers
 JOIN 
